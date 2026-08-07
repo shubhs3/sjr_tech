@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Product Specification | SJR TECH Industries</title>
+  <meta name="description" content="Detailed engineering specifications, pressure ratings, material options, and product range for SJR TECH Industries products.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .product-page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 7rem 2rem 5rem;
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    .breadcrumb a {
+      color: var(--accent-gold);
+    }
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+    .product-detail-img-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-card);
+      position: sticky;
+      top: 6rem;
+    }
+    .product-detail-img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+    }
+    .product-detail-header {
+      margin-bottom: 2rem;
+    }
+    .product-detail-title {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .product-detail-summary {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .action-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .doc-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .doc-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    @media (max-width: 992px) {
+      .product-detail-grid {
+        grid-template-columns: 1fr;
+      }
+      .product-detail-img-box {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html#home" class="brand-logo">
+        <img src="assets/images/logo.jpg" alt="SJR TECH Industries Logo" class="brand-logo-img">
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html#home" class="nav-link">Home</a></li>
+        <li><a href="index.html#products" class="nav-link">All Products</a></li>
+        <li><a href="index.html#about" class="nav-link">About Us</a></li>
+        <li><a href="index.html#industries" class="nav-link">Industries</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-contact-header">
+        <a href="https://wa.me/917517797417" target="_blank" class="nav-contact-badge">
+          💬 +91 751 779 7417
+        </a>
+        <a href="mailto:sjrtechindustries@gmail.com" class="nav-contact-badge hide-mobile">
+          ✉️ sjrtechindustries@gmail.com
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="themeToggleBtn" class="icon-btn" title="Toggle Light/Dark Theme">☀️</button>
+        <button id="cartDrawerBtn" class="icon-btn cart-badge-container" title="View Inquiry List">
+          📋 <span id="cartBadge" class="badge">0</span>
+        </button>
+        <a href="index.html#products" class="btn-primary">← All Products</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </header>
+
+  <!-- Product Detail Content -->
+  <main class="product-page-container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a> &rsaquo;
+      <a href="index.html#products">Products</a> &rsaquo;
+      <span id="breadcrumbCategory" style="color: var(--text-main);">Category</span> &rsaquo;
+      <span id="breadcrumbTitle" style="color: var(--text-muted);">Product</span>
+    </nav>
+
+    <div id="productDetailWrapper">
+      <div style="text-align: center; padding: 4rem 1rem;">
+        <h3>Loading Product Specifications...</h3>
+      </div>
+    </div>
+  </main>
+
+  <!-- Quick Quote / Inquiry Cart Drawer -->
+  <div id="quoteDrawer" class="quote-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">📋 Quotation Request List</h3>
+      <button id="drawerCloseBtn" class="modal-close" style="position: static;">✖</button>
+    </div>
+    <div id="quoteDrawerItems" class="drawer-body">
+      <!-- Dynamic Quote Items -->
+    </div>
+    <div class="drawer-footer">
+      <form id="quoteForm">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="quoteName" class="form-input" required placeholder="Sagar Desai">
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" id="quoteCompany" class="form-input" placeholder="Company Ltd">
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="quoteEmail" class="form-input" required placeholder="sjrtechindustries@gmail.com">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp *</label>
+          <input type="tel" id="quotePhone" class="form-input" required placeholder="+91 751 779 7417">
+        </div>
+        <div class="form-group">
+          <label>Additional Notes / Quantity</label>
+          <input type="text" id="quoteNotes" class="form-input" placeholder="e.g. 500 meters 1/2 inch hose">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          Send Instant WhatsApp Inquiry 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Large Image Zoom Modal -->
+  <div id="imageZoomModal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 90vw; width: fit-content; background: var(--bg-card); padding: 1.5rem; text-align: center;">
+      <button id="imageZoomCloseBtn" class="modal-close" onclick="closeImageZoomModal()">✖</button>
+      <img id="imageZoomSrc" src="" alt="Enlarged Product Image" style="max-width: 82vw; max-height: 78vh; object-fit: contain; border-radius: var(--radius-md); border: 1px solid var(--border-gold); box-shadow: var(--shadow-card);">
+      <h4 id="imageZoomTitle" style="margin-top: 1rem; color: var(--text-main); font-family: var(--font-display); font-size: 1.25rem;">Product Name</h4>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20have%20an%20inquiry." target="_blank" class="floating-whatsapp-btn" title="Chat on WhatsApp (+91 751 779 7417)">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 2c-5.517 0-9.993 4.476-9.993 9.993 0 1.763.459 3.486 1.332 5.006L2 22l5.127-1.343c1.472.802 3.136 1.226 4.904 1.226 5.517 0 9.993-4.476 9.993-9.993C22.024 6.476 17.548 2 12.031 2zm5.786 14.184c-.244.688-1.428 1.317-1.96 1.371-.497.051-1.147.078-3.26-.777-2.705-1.093-4.457-3.844-4.593-4.025-.136-.181-1.107-1.472-1.107-2.808 0-1.336.702-1.993.951-2.261.244-.268.532-.335.71-.335.178 0 .355.003.51.01.164.007.387-.062.605.461.224.536.764 1.865.831 2.002.067.136.111.296.022.473-.089.178-.134.29-.267.447-.133.157-.28.351-.4.472-.134.135-.274.282-.118.55.156.268.694 1.147 1.492 1.857 1.025.912 1.89 1.196 2.159 1.33.268.134.424.112.579-.067.156-.178.667-.777.845-1.045.178-.268.356-.223.599-.134.244.089 1.543.727 1.81 86.267.133.535.133 1.002-.111 1.69z"/></svg>
+    <span>WhatsApp Us</span>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html#home" class="brand-logo">
+          <img src="assets/images/logo.jpg" alt="SJR TECH Industries Logo" class="brand-logo-img">
+        </a>
+        <p>
+          Leading industrial supplier of hydraulic hoses, hose fittings, mechanical valves, expansion bellows, fasteners, electrical enclosures, safety equipment, and precision engineered components.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Product Families</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#products">Hydraulic Hoses & Fittings</a></li>
+          <li><a href="index.html#products">SS & Rubber Expansion Bellows</a></li>
+          <li><a href="index.html#products">Hydraulic Valves & Pumps</a></li>
+          <li><a href="index.html#products">High Tensile Fasteners</a></li>
+          <li><a href="index.html#products">Electrical Enclosures & Trays</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About Company</a></li>
+          <li><a href="index.html#industries">Industries Served</a></li>
+          <li><a href="index.html#contact">Request Quotation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quality & Contact</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>WhatsApp:</strong> <a href="https://wa.me/917517797417" target="_blank" style="color: var(--accent-gold); font-weight: 700;">+91 751 779 7417</a></p>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:sjrtechindustries@gmail.com" style="color: var(--accent-gold); font-weight: 700;">sjrtechindustries@gmail.com</a></p>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>ISO Standards:</strong> IEC 61439, NFPA 20, ISO 9001</p>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Supply Mode:</strong> ARC, OEM, Bulk Export</p>
+        <p style="font-size: 0.85rem; margin-top: 0.75rem; line-height: 1.5; color: var(--text-muted);">
+          <strong>📍 Office Address:</strong><br>
+          Office No. A-5, Sr.No -148/7/2, Nirmitee Home Developers, Sinhgad Road, Dhayri, Pune – 411041, Maharashtra, India
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 SJR TECH Industries. All Rights Reserved.</p>
+      <p>Modern Web Application • Hostinger Deployment Ready</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

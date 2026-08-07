@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SJR TECH Industries | Industrial Hydraulic Hoses, Valves, Fittings & Fasteners</title>
+  <meta name="description" content="SJR TECH Industries is a premier supplier of high-pressure hydraulic hoses, fittings, valves, pumps, bellows, fasteners, PPE, and industrial engineering solutions worldwide.">
+  <meta name="keywords" content="Hydraulic Hoses, Hose Fittings, Industrial Valves, Hydraulic Pumps, SS Bellows, Fasteners, Cable Trays, PPE, SJR TECH">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Glassmorphism Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <img src="assets/images/logo.jpg" alt="SJR TECH Industries Logo" class="brand-logo-img">
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#products" class="nav-link">All Products</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#industries" class="nav-link">Industries</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-contact-header">
+        <a href="https://wa.me/917517797417" target="_blank" class="nav-contact-badge">
+          💬 +91 751 779 7417
+        </a>
+        <a href="mailto:sjrtechindustries@gmail.com" class="nav-contact-badge hide-mobile">
+          ✉️ sjrtechindustries@gmail.com
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="themeToggleBtn" class="icon-btn" title="Toggle Light/Dark Theme">☀️</button>
+        <button id="cartDrawerBtn" class="icon-btn cart-badge-container" title="View Inquiry List">
+          📋 <span id="cartBadge" class="badge">0</span>
+        </button>
+        <button id="adminModalBtn" class="icon-btn" title="Admin / Product Builder">⚙️</button>
+        <a href="#products" class="btn-primary">Explore Products</a>
+      </div>
+
+      <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-tag">⚡ ISO 9001 Certified Industrial Supplier</div>
+        <h1 class="hero-title">Precision Engineering & <span>Fluid Power Solutions</span></h1>
+        <p class="hero-description">
+          SJR TECH Industries delivers premium industrial hydraulic hoses, precision fittings, mechanical valves, expansion bellows, high-tensile fasteners, and safety equipment for high-pressure industrial applications worldwide.
+        </p>
+        <div class="hero-actions">
+          <a href="#products" class="btn-primary">Browse 26 Product Families 🚀</a>
+          <a href="#contact" class="btn-secondary">Request Custom Quote ✉️</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">26+</span>
+            <span class="stat-label">Product Categories</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">10,000+</span>
+            <span class="stat-label">PSI Pressure Range</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Quality Assured</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-card-icon">⚙️</div>
+          <div>
+            <h3 class="hero-card-title">Industrial Capabilities</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Heavy Engineering & OEM Supply</p>
+          </div>
+        </div>
+        <ul class="capability-list">
+          <li class="capability-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            High-Pressure Impulse & Fatigue Tested
+          </li>
+          <li class="capability-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            CRCA, SS304, SS316 & Alloy Materials
+          </li>
+          <li class="capability-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            NEMA, IEC 61439 & NFPA Standards
+          </li>
+          <li class="capability-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            Annual Rate Contracts & Bulk Export
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Section -->
+  <section id="products">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-subtitle">Complete Industrial Catalog</span>
+        <h2 class="section-title">Industrial Product Range</h2>
+        <p class="section-desc">Search and filter through our comprehensive catalog of 26 industrial product families.</p>
+      </div>
+
+      <div class="controls-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search products (e.g. Hose, Valve, Bellows, Fasteners)...">
+        </div>
+
+        <div id="categoryTabsContainer" class="category-tabs">
+          <!-- Dynamic Category Tabs -->
+        </div>
+
+        <div style="display: flex; justify: space-between; align-items: center;">
+          <span id="productCountBadge" style="font-size: 0.9rem; font-weight: 700; color: var(--accent-gold);">
+            Loading products...
+          </span>
+        </div>
+      </div>
+
+      <div id="productsGrid" class="products-grid">
+        <!-- Dynamic Product Cards -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" style="background: var(--bg-card-hover);">
+    <div class="section-container">
+      <div class="hero-content" style="gap: 3rem;">
+        <div>
+          <span class="section-subtitle">About SJR TECH Industries</span>
+          <h2 class="section-title">Reliable Engineering Solutions for Global Industry</h2>
+          <p class="hero-description">
+            SJR TECH Industries is an established industrial leader providing hydraulic hoses, fittings, mechanical valves, expansion joints, heat exchangers, fasteners, and safety solutions. Engineered for durability in high-vibration, high-pressure, and corrosive environments.
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+            <div style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 0.5rem;">Precision Engineering</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">State-of-the-art CNC machining and high impulse testing ensures zero-leakage performance.</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+              <h4 style="color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 0.5rem;">Custom Supply</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">Tailored sizes, material grades (SS304/316, CRCA, Brass), and OEM project-based supply contracts.</p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <img src="assets/images/product-11.png" alt="Hydraulic Power Packs" style="width: 100%; border-radius: var(--radius-lg); border: 1px solid var(--border-gold); box-shadow: var(--shadow-card);" onerror="this.src='assets/images/hero-banner.jpg'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industries Served -->
+  <section id="industries">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-subtitle">Applications & Industries</span>
+        <h2 class="section-title">Industries We Serve</h2>
+        <p class="section-desc">Our engineering products power critical infrastructure and heavy manufacturing worldwide.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;">
+        <div style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">⚡</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Power Generation</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Thermal, Hydro, Nuclear & Renewable Power Plants.</p>
+        </div>
+        <div style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">🛢️</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Oil & Gas Refineries</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Upstream & Downstream High-Pressure Fluid Transfer.</p>
+        </div>
+        <div style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">🏭</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Steel & Heavy Industry</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Rolling Mills, Cement Plants & Chemical Processing.</p>
+        </div>
+        <div style="background: var(--bg-card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          <div style="font-size: 2rem; margin-bottom: 0.75rem;">💊</div>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;">Pharma & Food Processing</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">Sanitary SS Bellows, PTFE Hose & Clean Room Safety.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact" style="background: var(--bg-card-hover);">
+    <div class="section-container">
+      <div class="section-header">
+        <span class="section-subtitle">Get In Touch</span>
+        <h2 class="section-title">Contact Us & Request Quotation</h2>
+        <p class="section-desc">Reach out to our engineering technical sales team directly or send an inquiry below.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information Cards -->
+        <div class="contact-info-wrapper">
+          <div class="contact-card">
+            <div class="contact-card-icon" style="background: rgba(37, 211, 102, 0.15); color: #25D366;">
+              💬
+            </div>
+            <div>
+              <h4>WhatsApp / Phone</h4>
+              <p><a href="https://wa.me/917517797417" target="_blank" class="contact-highlight">+91 751 779 7417</a></p>
+              <div class="contact-actions-mini">
+                <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20have%20an%20inquiry." target="_blank" class="btn-whatsapp-sm">
+                  💬 Chat on WhatsApp
+                </a>
+                <a href="tel:+917517797417" class="btn-call-sm">
+                  📞 Call Now
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon" style="background: rgba(37, 99, 235, 0.15); color: #3b82f6;">
+              ✉️
+            </div>
+            <div>
+              <h4>Official Email</h4>
+              <p><a href="mailto:sjrtechindustries@gmail.com" class="contact-highlight">sjrtechindustries@gmail.com</a></p>
+              <div class="contact-actions-mini">
+                <a href="mailto:sjrtechindustries@gmail.com?subject=Industrial%20Product%20Inquiry%20-%20SJR%20TECH" class="btn-email-sm">
+                  ✉️ Send Email
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">
+              📍
+            </div>
+            <div>
+              <h4>Our Office Location</h4>
+              <p style="font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;">SJR Tech Industries</p>
+              <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
+                Office No. A-5, Sr.No -148/7/2,<br>
+                Nirmitee Home Developers,<br>
+                Sinhgad Road, Dhayri, Pune – 411041<br>
+                Maharashtra, India
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--accent-gold);">
+              🌐
+            </div>
+            <div>
+              <h4>Website & Company</h4>
+              <p><strong style="color: var(--text-main);">SJR TECH Industries</strong></p>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">Industrial Solutions Worldwide • ARC & OEM Supply</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quotation / Message Form -->
+        <div class="contact-form-box">
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1.25rem; color: var(--text-main);">
+            ✉️ Send Direct Technical Sales Inquiry
+          </h3>
+          <form id="mainContactForm">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="contactName" class="form-input" required placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" id="contactCompany" class="form-input" placeholder="Acme Industries">
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="contactEmail" class="form-input" required placeholder="john@acme.com">
+              </div>
+              <div class="form-group">
+                <label>Phone / WhatsApp *</label>
+                <input type="tel" id="contactPhone" class="form-input" required placeholder="+91 751 779 7417">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Product Requirements & Specifications</label>
+              <textarea id="contactMessage" class="form-input" rows="4" placeholder="Mention product type, sizes, pressure ratings, and quantities needed..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+              Submit Inquiry via WhatsApp / Email 🚀
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Specs Modal -->
+  <div id="productModalOverlay" class="modal-overlay">
+    <div class="modal-container">
+      <button id="modalCloseBtn" class="modal-close">✖</button>
+      <div id="productModalBody" class="modal-body">
+        <!-- Dynamic Product Content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Quote / Inquiry Cart Drawer -->
+  <div id="quoteDrawer" class="quote-drawer">
+    <div class="drawer-header">
+      <h3 class="drawer-title">📋 Quotation Request List</h3>
+      <button id="drawerCloseBtn" class="modal-close" style="position: static;">✖</button>
+    </div>
+    <div id="quoteDrawerItems" class="drawer-body">
+      <!-- Dynamic Quote Items -->
+    </div>
+    <div class="drawer-footer">
+      <form id="quoteForm">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" id="quoteName" class="form-input" required placeholder="Sagar Desai">
+        </div>
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" id="quoteCompany" class="form-input" placeholder="Company Ltd">
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="quoteEmail" class="form-input" required placeholder="sjrtechindustries@gmail.com">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp *</label>
+          <input type="tel" id="quotePhone" class="form-input" required placeholder="+91 751 779 7417">
+        </div>
+        <div class="form-group">
+          <label>Additional Notes / Quantity</label>
+          <input type="text" id="quoteNotes" class="form-input" placeholder="e.g. 500 meters 1/2 inch hose">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+          Send Instant WhatsApp Inquiry 🚀
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin / Visual Product Builder Modal -->
+  <div id="adminModalOverlay" class="modal-overlay">
+    <div class="modal-container" style="max-width: 600px;">
+      <button id="adminModalCloseBtn" class="modal-close">✖</button>
+      <div class="modal-body">
+        <h2 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent-gold);">
+          ⚙️ Admin: Add New Product & Update Catalog
+        </h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+          Add a new product category to your catalog. Submitting will instantly add it to the view and download an updated <code>products.json</code> file to replace on Hostinger!
+        </p>
+
+        <form id="adminProductForm">
+          <div class="form-group">
+            <label>Product Title *</label>
+            <input type="text" id="adminTitle" class="form-input" required placeholder="e.g. High Pressure Solenoid Valves">
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <input type="text" id="adminCategory" class="form-input" required placeholder="e.g. Valves & Flow Control">
+          </div>
+          <div class="form-group">
+            <label>Summary Description *</label>
+            <textarea id="adminSummary" class="form-input" rows="2" required placeholder="Short 2-line product summary..."></textarea>
+          </div>
+          <div class="form-group">
+            <label>Key Features (1 per line)</label>
+            <textarea id="adminFeatures" class="form-input" rows="3" placeholder="High pressure rated&#10;Leak-free seal&#10;SS316 material"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Image Filename (or path)</label>
+            <input type="text" id="adminImage" class="form-input" placeholder="e.g. product-27.png or hero-banner.jpg">
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Save & Export products.json 💾
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Quick Button -->
+  <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20have%20an%20inquiry." target="_blank" class="floating-whatsapp-btn" title="Chat on WhatsApp (+91 751 779 7417)">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 2c-5.517 0-9.993 4.476-9.993 9.993 0 1.763.459 3.486 1.332 5.006L2 22l5.127-1.343c1.472.802 3.136 1.226 4.904 1.226 5.517 0 9.993-4.476 9.993-9.993C22.024 6.476 17.548 2 12.031 2zm5.786 14.184c-.244.688-1.428 1.317-1.96 1.371-.497.051-1.147.078-3.26-.777-2.705-1.093-4.457-3.844-4.593-4.025-.136-.181-1.107-1.472-1.107-2.808 0-1.336.702-1.993.951-2.261.244-.268.532-.335.71-.335.178 0 .355.003.51.01.164.007.387-.062.605.461.224.536.764 1.865.831 2.002.067.136.111.296.022.473-.089.178-.134.29-.267.447-.133.157-.28.351-.4.472-.134.135-.274.282-.118.55.156.268.694 1.147 1.492 1.857 1.025.912 1.89 1.196 2.159 1.33.268.134.424.112.579-.067.156-.178.667-.777.845-1.045.178-.268.356-.223.599-.134.244.089 1.543.727 1.81 86.267.133.535.133 1.002-.111 1.69z"/></svg>
+    <span>WhatsApp Us</span>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#home" class="brand-logo">
+          <img src="assets/images/logo.jpg" alt="SJR TECH Industries Logo" class="brand-logo-img">
+        </a>
+        <p>
+          Leading industrial supplier of hydraulic hoses, hose fittings, mechanical valves, expansion bellows, fasteners, electrical enclosures, safety equipment, and precision engineered components.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Product Families</h4>
+        <ul class="footer-links">
+          <li><a href="#products">Hydraulic Hoses & Fittings</a></li>
+          <li><a href="#products">SS & Rubber Expansion Bellows</a></li>
+          <li><a href="#products">Hydraulic Valves & Pumps</a></li>
+          <li><a href="#products">High Tensile Fasteners</a></li>
+          <li><a href="#products">Electrical Enclosures & Trays</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Company</a></li>
+          <li><a href="#industries">Industries Served</a></li>
+          <li><a href="#contact">Request Quotation</a></li>
+          <li><a href="javascript:void(0)" onclick="document.getElementById('adminModalOverlay').classList.add('active')">Admin Product Builder</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quality & Contact</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>WhatsApp:</strong> <a href="https://wa.me/917517797417" target="_blank" style="color: var(--accent-gold); font-weight: 700;">+91 751 779 7417</a></p>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:sjrtechindustries@gmail.com" style="color: var(--accent-gold); font-weight: 700;">sjrtechindustries@gmail.com</a></p>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>ISO Standards:</strong> IEC 61439, NFPA 20, ISO 9001</p>
+        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Supply Mode:</strong> ARC, OEM, Bulk Export</p>
+        <p style="font-size: 0.85rem; margin-top: 0.75rem; line-height: 1.5; color: var(--text-muted);">
+          <strong>📍 Office Address:</strong><br>
+          Office No. A-5, Sr.No -148/7/2, Nirmitee Home Developers, Sinhgad Road, Dhayri, Pune – 411041, Maharashtra, India
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 SJR TECH Industries. All Rights Reserved.</p>
+      <p>Modern Web Application • Hostinger Deployment Ready</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

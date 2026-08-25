@@ -88,13 +88,29 @@ function setupEventListeners() {
     });
   }
 
-  // Escape key closes modals
+  // Mobile Navigation Toggle
+  const mobileToggleBtn = document.querySelector('.mobile-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  if (mobileToggleBtn && navMenu) {
+    mobileToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navMenu.classList.toggle('active');
+    });
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileToggleBtn.contains(e.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+  }
+
+  // Escape key closes modals and mobile menu
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeModal();
       closeImageZoomModal();
       document.getElementById('quoteDrawer')?.classList.remove('open');
       document.getElementById('adminModalOverlay')?.classList.remove('active');
+      navMenu?.classList.remove('active');
     }
   });
 }
@@ -151,7 +167,12 @@ function renderProducts() {
     const matchesSearch = !searchQuery || 
       p.title.toLowerCase().includes(searchQuery) ||
       p.summary.toLowerCase().includes(searchQuery) ||
-      p.category.toLowerCase().includes(searchQuery);
+      p.category.toLowerCase().includes(searchQuery) ||
+      (p.overview || '').toLowerCase().includes(searchQuery) ||
+      (p.features || []).some(f => f.toLowerCase().includes(searchQuery)) ||
+      (p.product_range || []).some(r => r.toLowerCase().includes(searchQuery)) ||
+      (p.applications || []).some(a => a.toLowerCase().includes(searchQuery)) ||
+      Object.entries(p.specs || {}).some(([k, v]) => k.toLowerCase().includes(searchQuery) || v.toLowerCase().includes(searchQuery));
     return matchesCat && matchesSearch;
   });
 
@@ -162,8 +183,8 @@ function renderProducts() {
   if (filtered.length === 0) {
     grid.innerHTML = `
       <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem;">
-        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">No products match your filter</h3>
-        <p style="color: var(--text-muted);">Try searching for "Hydraulic", "Valve", "Bellows", "Fasteners", etc.</p>
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">No products match your search filter</h3>
+        <p style="color: var(--text-muted);">Try searching for "Hydraulic", "Valve", "Bellows", "700 bar", "Fasteners", "PTFE", etc.</p>
       </div>
     `;
     return;
@@ -181,10 +202,16 @@ function renderProducts() {
         <div class="product-features-mini">
           ${(p.features || []).slice(0, 3).map(f => `<span class="feature-pill">✓ ${f}</span>`).join('')}
         </div>
+        ${p.applications && p.applications.length > 0 ? `
+          <div style="margin-top: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
+            ${p.applications.slice(0, 2).map(app => `<span style="font-size: 0.75rem; padding: 0.2rem 0.55rem; border-radius: 12px; background: rgba(37,99,235,0.08); color: var(--primary); font-weight: 600;">🏷️ ${app}</span>`).join('')}
+            ${p.applications.length > 2 ? `<span style="font-size: 0.75rem; color: var(--text-muted); padding: 0.2rem;">+${p.applications.length - 2} more</span>` : ''}
+          </div>
+        ` : ''}
         <div class="product-card-actions">
-          <a href="product.html?id=${p.id}" class="btn-specs" style="text-decoration: none; text-align: center;">
+          <button class="btn-specs" onclick="openProductModal(${p.id})">
             Technical Specs 📊
-          </a>
+          </button>
           <button class="btn-inquire-icon" title="Add to Quote Request" onclick="addToQuote(${p.id})">
             ➕
           </button>
@@ -204,63 +231,93 @@ function openProductModal(id) {
 
   const specsRows = Object.entries(product.specs || {}).map(([key, val]) => `
     <tr>
-      <td>${key}</td>
-      <td>${val}</td>
+      <td class="spec-param">⚙️ ${key}</td>
+      <td class="spec-val">${val}</td>
     </tr>
   `).join('');
 
   body.innerHTML = `
-    <div class="modal-header-grid">
-      <img src="${product.image}" alt="${product.title}" class="modal-product-img" onerror="this.src='assets/images/hero-banner.jpg'">
+    <div class="modal-header-grid" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div style="position: relative; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--border-gold); width: 100%;">
+        <img src="${product.image}" alt="${product.title}" class="modal-product-img" style="width: 100%; height: 380px; object-fit: cover; display: block;" onerror="this.src='assets/images/hero-banner.jpg'">
+        <button class="img-zoom-btn" style="position: absolute; bottom: 1rem; right: 1rem;" onclick="openImageZoomModal('${product.image}', '${product.title.replace(/'/g, "\\'")}')">
+          🔍 Zoom Image
+        </button>
+      </div>
       <div>
         <span class="modal-category">${product.category}</span>
-        <h2 class="modal-title">${product.title}</h2>
-        <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem;">${product.summary}</p>
+        <h2 class="modal-title" style="font-size: 2.2rem; font-family: var(--font-display); font-weight: 800; margin-bottom: 0.5rem;">${product.title}</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.25rem; line-height: 1.6;">${product.summary}</p>
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem;">
           <button class="btn-primary" onclick="addToQuote(${product.id}); closeModal();">
             Request Instant Quote ✉️
           </button>
-          <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}." target="_blank" class="btn-whatsapp-sm" style="font-size: 0.9rem; padding: 0.7rem 1.2rem; border-radius: var(--radius-sm);">
+          <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}." target="_blank" class="btn-whatsapp-sm" style="font-size: 0.95rem; padding: 0.75rem 1.4rem; border-radius: var(--radius-sm);">
             💬 Inquire on WhatsApp
+          </a>
+          <a href="product.html?id=${product.id}" class="btn-secondary" style="font-size: 0.95rem; padding: 0.75rem 1.4rem; border-radius: var(--radius-sm);">
+            Full Details Page ↗
           </a>
         </div>
       </div>
     </div>
 
+    ${product.overview ? `
+      <div class="specs-section">
+        <h4 class="specs-title">📖 Product Overview</h4>
+        <div class="product-overview-box">
+          <p>${product.overview}</p>
+        </div>
+      </div>
+    ` : ''}
+
     ${product.features && product.features.length > 0 ? `
       <div class="specs-section">
-        <h4 class="specs-title">Key Engineering Features</h4>
-        <ul class="bullet-list">
-          ${product.features.map(f => `<li>${f}</li>`).join('')}
-        </ul>
+        <h4 class="specs-title">✨ Key Engineering Features</h4>
+        <div class="feature-cards-grid">
+          ${product.features.map(f => `
+            <div class="feature-card">
+              <span class="feature-card-icon">✓</span>
+              <span>${f}</span>
+            </div>
+          `).join('')}
+        </div>
       </div>
     ` : ''}
 
     ${specsRows ? `
       <div class="specs-section">
-        <h4 class="specs-title">Technical Specifications</h4>
-        <table class="specs-table">
-          <tbody>
-            ${specsRows}
-          </tbody>
-        </table>
+        <h4 class="specs-title">📊 Technical Specifications</h4>
+        <div class="specs-table-container">
+          <table class="specs-table">
+            <thead>
+              <tr>
+                <th>Parameter / Property</th>
+                <th>Engineering Specification</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${specsRows}
+            </tbody>
+          </table>
+        </div>
       </div>
     ` : ''}
 
     ${product.product_range && product.product_range.length > 0 ? `
       <div class="specs-section">
-        <h4 class="specs-title">Product Range & Available Variants</h4>
-        <ul class="bullet-list">
-          ${product.product_range.map(r => `<li>${r}</li>`).join('')}
-        </ul>
+        <h4 class="specs-title">📦 Product Range & Variants</h4>
+        <div class="range-chip-grid">
+          ${product.product_range.map(r => `<span class="range-chip">${r}</span>`).join('')}
+        </div>
       </div>
     ` : ''}
 
-    ${product.full_text ? `
+    ${product.applications && product.applications.length > 0 ? `
       <div class="specs-section">
-        <h4 class="specs-title">Complete Product Documentation & Engineering Details</h4>
-        <div class="full-text-content">
-          ${product.full_text.split('\n').filter(line => line.trim()).map(line => `<p>${line.trim()}</p>`).join('')}
+        <h4 class="specs-title">🏭 Applications & Industries Served</h4>
+        <div class="app-badge-grid">
+          ${product.applications.map(app => `<span class="app-badge">🏷️ ${app}</span>`).join('')}
         </div>
       </div>
     ` : ''}
@@ -439,7 +496,7 @@ function renderSingleProductPage() {
       <div style="text-align: center; padding: 5rem 1rem;">
         <h2>Product Not Found</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem;">The requested industrial product specification does not exist.</p>
-        <a href="index.html#products" class="btn-primary" style="margin-top: 1.5rem; display: inline-flex;">Back to Product Catalog</a>
+        <a href="explore-products.html" class="btn-primary" style="margin-top: 1.5rem; display: inline-flex;">Explore Product Catalogue</a>
       </div>
     `;
     return;
@@ -457,79 +514,108 @@ function renderSingleProductPage() {
 
   const specsRows = Object.entries(product.specs || {}).map(([key, val]) => `
     <tr>
-      <td style="font-weight: 600; color: var(--text-muted); width: 35%;">${key}</td>
-      <td>${val}</td>
+      <td class="spec-param">⚙️ ${key}</td>
+      <td class="spec-val">${val}</td>
     </tr>
   `).join('');
 
   container.innerHTML = `
-    <div class="product-detail-grid">
-      <div class="product-detail-img-box">
-        <div class="product-detail-img-wrapper" style="position: relative; overflow: hidden; border-radius: var(--radius-md);">
-          <img src="${product.image}" alt="${product.title}" class="product-detail-img" onerror="this.src='assets/images/hero-banner.jpg'">
-          <button class="img-zoom-btn" onclick="openImageZoomModal('${product.image}', '${product.title.replace(/'/g, "\\'")}')">
+    <div class="product-detail-grid" style="display: flex; flex-direction: column; gap: 2rem;">
+      <div class="product-detail-img-box" style="width: 100%;">
+        <div class="product-detail-img-wrapper" style="position: relative; overflow: hidden; border-radius: var(--radius-md); width: 100%;">
+          <img src="${product.image}" alt="${product.title}" class="product-detail-img" style="width: 100%; height: 480px; object-fit: cover; display: block;" onerror="this.src='assets/images/hero-banner.jpg'">
+          <span class="product-category-badge" style="position: absolute; top: 1.25rem; left: 1.25rem; font-size: 0.9rem; padding: 0.45rem 1rem;">${product.category}</span>
+          <button class="img-zoom-btn" style="position: absolute; bottom: 1.25rem; right: 1.25rem;" onclick="openImageZoomModal('${product.image}', '${product.title.replace(/'/g, "\\'")}')">
             🔍 Zoom Image
           </button>
         </div>
-        <div style="margin-top: 1.25rem; text-align: center;">
-          <span class="product-category-badge" style="position: static; display: inline-block;">${product.category}</span>
-        </div>
       </div>
 
-      <div>
-        <div class="product-detail-header">
-          <h1 class="product-detail-title">${product.title}</h1>
-          <p class="product-detail-summary">${product.summary}</p>
-          <div class="action-group">
-            <button class="btn-primary" onclick="addToQuote(${product.id});">
+      <div class="product-detail-contents">
+        <div class="product-detail-header" style="margin-bottom: 2rem;">
+          <h1 class="product-detail-title" style="font-size: 2.6rem; font-family: var(--font-display); font-weight: 800; margin-bottom: 0.75rem; line-height: 1.2;">${product.title}</h1>
+          <p class="product-detail-summary" style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 1.75rem; line-height: 1.6;">${product.summary}</p>
+          <div class="action-group" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem;">
+            <button class="btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.6rem;" onclick="addToQuote(${product.id});">
               Add to Quote Request 📋
             </button>
-            <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}%20(ID:%20${product.id})." target="_blank" class="btn-whatsapp-sm" style="font-size: 1rem; padding: 0.75rem 1.4rem; border-radius: var(--radius-sm);">
+            <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}%20(ID:%20${product.id})." target="_blank" class="btn-whatsapp-sm" style="font-size: 1.05rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-sm);">
               💬 Direct WhatsApp Inquiry
             </a>
-            <a href="mailto:sjrtechindustries@gmail.com?subject=Inquiry%20for%20${encodeURIComponent(product.title)}" class="btn-email-sm" style="font-size: 1rem; padding: 0.75rem 1.4rem; border-radius: var(--radius-sm);">
+            <a href="mailto:sjrtechindustries@gmail.com?subject=Inquiry%20for%20${encodeURIComponent(product.title)}" class="btn-email-sm" style="font-size: 1.05rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-sm);">
               ✉️ Email Sales Team
             </a>
           </div>
         </div>
 
+        ${product.overview ? `
+          <div class="doc-section">
+            <h3 class="doc-title">📖 Product Overview</h3>
+            <div class="product-overview-box">
+              <p>${product.overview}</p>
+            </div>
+          </div>
+        ` : ''}
+
         ${product.features && product.features.length > 0 ? `
           <div class="doc-section">
-            <h3 class="doc-title">Key Engineering Features</h3>
-            <ul class="bullet-list">
-              ${product.features.map(f => `<li>${f}</li>`).join('')}
-            </ul>
+            <h3 class="doc-title">✨ Key Engineering Features</h3>
+            <div class="feature-cards-grid">
+              ${product.features.map(f => `
+                <div class="feature-card">
+                  <span class="feature-card-icon">✓</span>
+                  <span>${f}</span>
+                </div>
+              `).join('')}
+            </div>
           </div>
         ` : ''}
 
         ${specsRows ? `
           <div class="doc-section">
-            <h3 class="doc-title">Technical Specifications</h3>
-            <table class="specs-table">
-              <tbody>
-                ${specsRows}
-              </tbody>
-            </table>
+            <h3 class="doc-title">📊 Technical Specifications</h3>
+            <div class="specs-table-container">
+              <table class="specs-table">
+                <thead>
+                  <tr>
+                    <th>Parameter / Property</th>
+                    <th>Engineering Specification</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${specsRows}
+                </tbody>
+              </table>
+            </div>
           </div>
         ` : ''}
 
         ${product.product_range && product.product_range.length > 0 ? `
           <div class="doc-section">
-            <h3 class="doc-title">Product Range & Available Variants</h3>
-            <ul class="bullet-list">
-              ${product.product_range.map(r => `<li>${r}</li>`).join('')}
-            </ul>
-          </div>
-        ` : ''}
-
-        ${product.full_text ? `
-          <div class="doc-section">
-            <h3 class="doc-title">Complete Technical Overview & Engineering Details</h3>
-            <div class="full-text-content" style="max-height: none;">
-              ${product.full_text.split('\n').filter(line => line.trim()).map(line => `<p style="margin-bottom: 0.75rem;">${line.trim()}</p>`).join('')}
+            <h3 class="doc-title">📦 Product Range & Available Variants</h3>
+            <div class="range-chip-grid">
+              ${product.product_range.map(r => `<span class="range-chip">${r}</span>`).join('')}
             </div>
           </div>
         ` : ''}
+
+        ${product.applications && product.applications.length > 0 ? `
+          <div class="doc-section">
+            <h3 class="doc-title">🏭 Applications & Industries Served</h3>
+            <div class="app-badge-grid">
+              ${product.applications.map(app => `<span class="app-badge">🏷️ ${app}</span>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="doc-section" style="background: var(--bg-card); border: 1px dashed var(--accent-gold); border-radius: var(--radius-md); padding: 1.5rem; margin-top: 1.5rem;">
+          <h4 style="color: var(--accent-gold); font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            🛠️ Custom Engineering & OEM Supply Support
+          </h4>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
+            Standard products as well as customized industrial solutions can be engineered and supplied as per your specific application, size, pressure rating, material grade, surface finish, technical drawing, or project requirement. Contact our technical sales team for custom fabrications and bulk orders.
+          </p>
+        </div>
       </div>
     </div>
   `;

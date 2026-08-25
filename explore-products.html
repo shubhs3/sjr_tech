@@ -3,97 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="pageTitle">Product Specification | SJR TECH Industries</title>
-  <meta name="description" content="Detailed engineering specifications, pressure ratings, material options, and product range for SJR TECH Industries products.">
+  <title>Explore Product Catalogue | SJR TECH Industries</title>
+  <meta name="description" content="Explore SJR TECH Industries complete catalogue of 26 industrial product families including high-pressure hydraulic hoses, valves, fittings, bellows, fasteners, and safety PPE.">
+  <meta name="keywords" content="Explore Products, Industrial Catalog, Hydraulic Hoses, Valves, Fittings, Bellows, Fasteners, SJR TECH">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .product-page-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 7rem 2rem 5rem;
+    .explore-page-header {
+      padding: 8rem 2rem 3rem;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(245, 158, 11, 0.08));
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
     }
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-    .breadcrumb a {
-      color: var(--accent-gold);
-    }
-    .product-detail-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-    .product-detail-img-box {
-      width: 100%;
-      background: var(--bg-card);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-lg);
-      padding: 1rem;
-      box-shadow: var(--shadow-card);
-    }
-    .product-detail-img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-      border-radius: var(--radius-md);
-    }
-    .product-detail-header {
-      margin-bottom: 2rem;
-    }
-    .product-detail-title {
+    .explore-page-title {
       font-family: var(--font-display);
-      font-size: 2.4rem;
+      font-size: 2.8rem;
       font-weight: 800;
       margin-bottom: 0.75rem;
-      line-height: 1.2;
+      color: var(--text-main);
     }
-    .product-detail-summary {
-      font-size: 1.1rem;
+    .explore-page-desc {
+      font-size: 1.15rem;
       color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 1.5rem;
       line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-    .action-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .doc-section {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
-    .doc-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent-gold);
-      margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-    @media (max-width: 992px) {
-      .product-detail-grid {
-        grid-template-columns: 1fr;
-      }
-      .product-detail-img-box {
-        position: static;
-      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar Header -->
+  <!-- Glassmorphism Navbar -->
   <header class="navbar">
     <div class="nav-container">
       <a href="index.html#home" class="brand-logo">
@@ -102,7 +41,7 @@
 
       <ul class="nav-menu">
         <li><a href="index.html#home" class="nav-link">Home</a></li>
-        <li><a href="explore-products.html" class="nav-link">Explore Products</a></li>
+        <li><a href="explore-products.html" class="nav-link active">Explore Products</a></li>
         <li><a href="index.html#about" class="nav-link">About Us</a></li>
         <li><a href="index.html#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -117,27 +56,59 @@
         <button id="cartDrawerBtn" class="icon-btn cart-badge-container" title="View Inquiry List">
           📋 <span id="cartBadge" class="badge">0</span>
         </button>
-        <a href="explore-products.html" class="btn-primary">← Explore Products</a>
+        <button id="adminModalBtn" class="icon-btn" title="Admin / Product Builder">⚙️</button>
+        <a href="index.html#home" class="btn-secondary">← Back Home</a>
         <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
       </div>
     </div>
   </header>
 
-  <!-- Product Detail Content -->
-  <main class="product-page-container">
-    <nav class="breadcrumb">
-      <a href="index.html">Home</a> &rsaquo;
-      <a href="explore-products.html">Explore Products</a> &rsaquo;
-      <span id="breadcrumbCategory" style="color: var(--text-main);">Category</span> &rsaquo;
-      <span id="breadcrumbTitle" style="color: var(--text-muted);">Product</span>
-    </nav>
+  <!-- Page Header Banner -->
+  <div class="explore-page-header">
+    <div class="section-container">
+      <span class="section-subtitle">Complete Industrial Catalogue</span>
+      <h1 class="explore-page-title">Explore 26 Industrial Product Families</h1>
+      <p class="explore-page-desc">
+        Filter, search, and view technical specifications across our premium range of fluid power, mechanical piping, electrical enclosures, thermal insulation, and safety engineering products.
+      </p>
+    </div>
+  </div>
 
-    <div id="productDetailWrapper">
-      <div style="text-align: center; padding: 4rem 1rem;">
-        <h3>Loading Product Specifications...</h3>
+  <!-- Product Catalog Section -->
+  <section id="products" style="padding-top: 2rem;">
+    <div class="section-container">
+      <div class="controls-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search products (e.g. Hose, Valve, Bellows, 700 bar, Fasteners, PTFE)...">
+        </div>
+
+        <div id="categoryTabsContainer" class="category-tabs">
+          <!-- Dynamic Category Tabs -->
+        </div>
+
+        <div style="display: flex; justify: space-between; align-items: center;">
+          <span id="productCountBadge" style="font-size: 0.95rem; font-weight: 700; color: var(--accent-gold);">
+            Loading products...
+          </span>
+        </div>
+      </div>
+
+      <div id="productsGrid" class="products-grid">
+        <!-- Dynamic Product Cards -->
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Technical Specs Modal Overlay -->
+  <div id="productModalOverlay" class="modal-overlay">
+    <div class="modal-container">
+      <button id="modalCloseBtn" class="modal-close">✖</button>
+      <div id="productModalBody" class="modal-body">
+        <!-- Dynamic Product Modal Content -->
+      </div>
+    </div>
+  </div>
 
   <!-- Quick Quote / Inquiry Cart Drawer -->
   <div id="quoteDrawer" class="quote-drawer">
@@ -174,6 +145,42 @@
           Send Instant WhatsApp Inquiry 🚀
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- Admin Modal -->
+  <div id="adminModalOverlay" class="modal-overlay">
+    <div class="modal-container" style="max-width: 600px;">
+      <button id="adminModalCloseBtn" class="modal-close">✖</button>
+      <div class="modal-body">
+        <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--accent-gold);">⚙️ Product Manager / Admin</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Add a new product family to the catalogue and download the updated products.json file.</p>
+        <form id="adminProductForm">
+          <div class="form-group">
+            <label>Product Title *</label>
+            <input type="text" id="adminTitle" class="form-input" required placeholder="e.g. Custom Hydraulic Power Pack">
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <input type="text" id="adminCategory" class="form-input" required placeholder="e.g. Hydraulics & Fluid Power">
+          </div>
+          <div class="form-group">
+            <label>Summary / Tagline *</label>
+            <input type="text" id="adminSummary" class="form-input" required placeholder="High performance custom hydraulic system">
+          </div>
+          <div class="form-group">
+            <label>Key Features (One per line)</label>
+            <textarea id="adminFeatures" class="form-input" rows="3" placeholder="High pressure capacity&#10;Leak-proof fittings"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Image Filename</label>
+            <input type="text" id="adminImage" class="form-input" placeholder="assets/images/product-1.png">
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Save & Download Updated products.json 💾
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -230,7 +237,6 @@
         <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>WhatsApp:</strong> <a href="https://wa.me/917517797417" target="_blank" style="color: var(--accent-gold); font-weight: 700;">+91 751 779 7417</a></p>
         <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:sjrtechindustries@gmail.com" style="color: var(--accent-gold); font-weight: 700;">sjrtechindustries@gmail.com</a></p>
         <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>ISO Standards:</strong> IEC 61439, NFPA 20, ISO 9001</p>
-        <p style="font-size: 0.9rem; margin-bottom: 0.5rem;"><strong>Supply Mode:</strong> ARC, OEM, Bulk Export</p>
         <p style="font-size: 0.85rem; margin-top: 0.75rem; line-height: 1.5; color: var(--text-muted);">
           <strong>📍 Office Address:</strong><br>
           Office No. A-5, Sr.No -148/7/2, Nirmitee Home Developers, Sinhgad Road, Dhayri, Pune – 411041, Maharashtra, India
@@ -240,7 +246,6 @@
 
     <div class="footer-bottom">
       <p>© 2026 SJR TECH Industries. All Rights Reserved.</p>
-      <p>Modern Web Application • Hostinger Deployment Ready</p>
     </div>
   </footer>
 

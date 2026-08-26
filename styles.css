@@ -82,6 +82,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
@@ -89,7 +92,10 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-main);
   line-height: 1.6;
+  width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
+  position: relative;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -141,8 +147,8 @@ button {
 }
 
 .brand-logo-img {
-  height: 48px;
-  max-height: 48px;
+  height: 92px;
+  max-height: 92px;
   width: auto;
   object-fit: contain;
   transition: var(--transition);
@@ -153,9 +159,9 @@ button {
 }
 
 .footer-brand .brand-logo-img {
-  height: 50px;
-  max-height: 50px;
-  margin-bottom: 0.5rem;
+  height: 120px;
+  max-height: 120px;
+  margin-bottom: 1rem;
 }
 
 .brand-icon {
@@ -595,7 +601,7 @@ section {
 /* Product Grid */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
 }
 
@@ -1305,17 +1311,33 @@ footer {
 }
 
 /* Contact Grid & Section */
+.grid-2col-responsive {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .grid-2col-responsive {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: 2.5rem;
   align-items: start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-info-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-card {
@@ -1327,6 +1349,16 @@ footer {
   align-items: flex-start;
   gap: 1.25rem;
   transition: var(--transition);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.contact-card > div:not(.contact-card-icon) {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  text-align: left;
 }
 
 .contact-card:hover {
@@ -1537,18 +1569,33 @@ footer {
   }
 
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .contact-info-wrapper,
+  .contact-form-box,
+  .contact-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
   }
 }
 
 @media (max-width: 768px) {
   html {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .brand-logo-img {
-    height: 40px;
-    max-height: 40px;
+    height: 64px;
+    max-height: 64px;
+  }
+
+  .footer-brand .brand-logo-img {
+    height: 85px;
+    max-height: 85px;
   }
 
   .hide-mobile {
@@ -1556,8 +1603,8 @@ footer {
   }
 
   .nav-contact-badge {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.75rem;
+    font-size: 0.92rem;
+    padding: 0.45rem 0.85rem;
   }
 
   .icon-btn {
@@ -1571,25 +1618,25 @@ footer {
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.15rem;
     line-height: 1.25;
   }
 
   .hero-description {
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 1.12rem;
+    line-height: 1.65;
   }
 
   .section-title {
-    font-size: 1.85rem;
+    font-size: 2rem;
   }
 
   .section-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .section-desc {
-    font-size: 1.02rem;
+    font-size: 1.1rem;
   }
 
   .explore-page-header {
@@ -1597,40 +1644,41 @@ footer {
   }
 
   .explore-page-title {
-    font-size: 1.85rem;
+    font-size: 2rem;
   }
 
   .explore-page-desc {
-    font-size: 1.02rem;
+    font-size: 1.1rem;
   }
 
   .search-input {
-    font-size: 1rem;
-    padding: 0.85rem 1.25rem 0.85rem 2.8rem;
+    font-size: 1.05rem;
+    padding: 0.95rem 1.25rem 0.95rem 3rem;
   }
 
   .category-tab {
-    font-size: 0.92rem;
-    padding: 0.6rem 1.1rem;
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
     font-weight: 600;
   }
 
   .product-title {
-    font-size: 1.35rem;
+    font-size: 1.45rem;
   }
 
   .product-summary {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
   }
 
   .feature-card {
-    font-size: 0.98rem;
-    padding: 1rem;
+    font-size: 1.05rem;
+    padding: 1.1rem;
   }
 
   .specs-table th, .specs-table td {
-    padding: 0.85rem 1rem;
-    font-size: 0.92rem;
+    padding: 0.95rem 1.1rem;
+    font-size: 1.02rem;
   }
 
   .modal-container {
@@ -1672,11 +1720,11 @@ footer {
 
 @media (max-width: 480px) {
   html {
-    font-size: 14.5px;
+    font-size: 16px;
   }
 
   .hero-title {
-    font-size: 1.75rem;
+    font-size: 1.95rem;
   }
 
   .hero-actions {

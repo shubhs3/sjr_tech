@@ -252,7 +252,7 @@ function openProductModal(id) {
           <button class="btn-primary" onclick="addToQuote(${product.id}); closeModal();">
             Request Instant Quote ✉️
           </button>
-          <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}." target="_blank" class="btn-whatsapp-sm" style="font-size: 0.95rem; padding: 0.75rem 1.4rem; border-radius: var(--radius-sm);">
+          <a href="https://wa.me/919270077935?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}." target="_blank" class="btn-whatsapp-sm" style="font-size: 0.95rem; padding: 0.75rem 1.4rem; border-radius: var(--radius-sm);">
             💬 Inquire on WhatsApp
           </a>
           <a href="product.html?id=${product.id}" class="btn-secondary" style="font-size: 0.95rem; padding: 0.75rem 1.4rem; border-radius: var(--radius-sm);">
@@ -401,10 +401,10 @@ function handleQuoteSubmission(e) {
   const itemsList = quoteCart.map(i => `• ${i.title}`).join('%0A');
   const message = `Hello SJR TECH Industries,%0A%0AI would like to request a quote for:%0A${itemsList}%0A%0A*Contact Details:*%0AName: ${encodeURIComponent(name)}%0ACompany: ${encodeURIComponent(company)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0ANotes: ${encodeURIComponent(notes)}`;
 
-  // WhatsApp redirect link with targeted phone number (+91 751 779 7417)
-  window.open(`https://wa.me/917517797417?text=${message}`, '_blank');
+  // WhatsApp redirect link with targeted phone number (+91 92700 77935)
+  window.open(`https://wa.me/919270077935?text=${message}`, '_blank');
 
-  showToast('🚀 Inquiry prepared! Opening WhatsApp chat (+91 751 779 7417)...');
+  showToast('🚀 Inquiry prepared! Opening WhatsApp chat (+91 92700 77935)...');
   quoteCart = [];
   updateQuoteCartUI();
   toggleQuoteDrawer();
@@ -421,8 +421,8 @@ function handleMainContactForm(e) {
 
   const message = `Hello SJR TECH Industries,%0A%0AI have an inquiry regarding your industrial products:%0A*Message / Requirements:* ${encodeURIComponent(messageText)}%0A%0A*My Contact Details:*%0AName: ${encodeURIComponent(name)}%0ACompany: ${encodeURIComponent(company)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}`;
 
-  window.open(`https://wa.me/917517797417?text=${message}`, '_blank');
-  showToast('🚀 Inquiry prepared! Directing to SJR TECH WhatsApp (+91 751 779 7417)...');
+  window.open(`https://wa.me/919270077935?text=${message}`, '_blank');
+  showToast('🚀 Inquiry prepared! Directing to SJR TECH WhatsApp (+91 92700 77935)...');
 }
 
 // Admin Add Product Handler (Generates updated products.json)
@@ -539,7 +539,7 @@ function renderSingleProductPage() {
             <button class="btn-primary" style="font-size: 1.05rem; padding: 0.85rem 1.6rem;" onclick="addToQuote(${product.id});">
               Add to Quote Request 📋
             </button>
-            <a href="https://wa.me/917517797417?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}%20(ID:%20${product.id})." target="_blank" class="btn-whatsapp-sm" style="font-size: 1.05rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-sm);">
+            <a href="https://wa.me/919270077935?text=Hello%20SJR%20TECH%20Industries,%20I%20am%20interested%20in%20product%20${encodeURIComponent(product.title)}%20(ID:%20${product.id})." target="_blank" class="btn-whatsapp-sm" style="font-size: 1.05rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-sm);">
               💬 Direct WhatsApp Inquiry
             </a>
             <a href="mailto:sjrtechindustries@gmail.com?subject=Inquiry%20for%20${encodeURIComponent(product.title)}" class="btn-email-sm" style="font-size: 1.05rem; padding: 0.85rem 1.6rem; border-radius: var(--radius-sm);">
